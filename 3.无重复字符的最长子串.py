@@ -5,21 +5,34 @@
 #
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        flag=0;
-        result=0;
-        strlen=s.__len__();
-        for i in range(0,strlen):
-            for j in range(0,strlen):
-                if s[i]==s[j] and i != j :
-                    result= abs(i-j);
-                    i=j;
-                if result>flag :
-                    flag=result;
-                if flag==9:
-                    print(i);
-                    print(j);
-        return flag;
+        rightQueen=[];
+        leftQueen=[];
 
-test=Solution();
-num = test.lengthOfLongestSubstring("adaddgghha");
-print(num);
+        for item in s: 
+            if rightQueen.__len__()>0:
+                if item not in rightQueen:
+                     rightQueen.append(item);
+                else:
+                    if leftQueen.__len__()<rightQueen.__len__() :
+                        leftQueen.clear();
+                        leftQueen = combineArray(leftQueen,rightQueen);
+                        
+                        rightQueen.clear(); 
+                    else:
+                        rightQueen.clear();   
+            else:
+                if item in leftQueen :
+                    rightQueen.append(item);
+                else:
+                    leftQueen.append(item);
+                    
+        if leftQueen.__len__()<rightQueen.__len__() :
+            return rightQueen.__len__() ;
+        else :
+            return leftQueen.__len__();
+
+def combineArray(numbs1:[],numbs2:[])->[]:
+        for item in numbs2:
+            numbs1.append(item);
+        return numbs1;
+
