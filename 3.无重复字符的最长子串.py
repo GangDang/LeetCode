@@ -12,9 +12,7 @@ class Solution:
             if rightQueen.__len__()>0:
                 if item not in rightQueen:
                      rightQueen.append(item);
-                else:
-                    
-
+                else:                    
                     if leftQueen.__len__()<=rightQueen.__len__() :
                         leftQueen.clear();
                         leftQueen = combineArray(leftQueen,rightQueen);                       
@@ -26,7 +24,6 @@ class Solution:
                         rightStartIndex=rightQueen.index(item)+1;
                         rightQueen=rightQueen[rightStartIndex:];
                         rightQueen.append(item);   
-                       
             else:
                 if item in leftQueen :
                     rightStartIndex=leftQueen.index(item)+1;
