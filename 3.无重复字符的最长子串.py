@@ -13,16 +13,26 @@ class Solution:
                 if item not in rightQueen:
                      rightQueen.append(item);
                 else:
-                    if leftQueen.__len__()<rightQueen.__len__() :
+                    
+
+                    if leftQueen.__len__()<=rightQueen.__len__() :
                         leftQueen.clear();
-                        leftQueen = combineArray(leftQueen,rightQueen);
+                        leftQueen = combineArray(leftQueen,rightQueen);                       
                         
-                        rightQueen.clear(); 
+                        rightStartIndex=rightQueen.index(item)+1;
+                        rightQueen=rightQueen[rightStartIndex:];
+                        rightQueen.append(item);
                     else:
-                        rightQueen.clear();   
+                        rightStartIndex=rightQueen.index(item)+1;
+                        rightQueen=rightQueen[rightStartIndex:];
+                        rightQueen.append(item);   
+                       
             else:
                 if item in leftQueen :
+                    rightStartIndex=leftQueen.index(item)+1;
+                    rightQueen=leftQueen[rightStartIndex:];
                     rightQueen.append(item);
+                    
                 else:
                     leftQueen.append(item);
                     
@@ -35,4 +45,3 @@ def combineArray(numbs1:[],numbs2:[])->[]:
         for item in numbs2:
             numbs1.append(item);
         return numbs1;
-
